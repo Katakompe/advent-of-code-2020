@@ -1,2 +1,8 @@
 *.class
 *.log
+.vscode
+.metals
+.scalafmt.conf
+
+#input files are not added go to adventofcode.com for them
+*.txt
