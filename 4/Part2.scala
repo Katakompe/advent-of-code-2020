@@ -5,9 +5,10 @@ object Part2 {
   def main(args: Array[String]): Unit = {
     val content = parseInput("input.txt")
 
+    val re = "(?:.+\\s)+.+".r
+
     val t1 = System.nanoTime
-    val passports = content
-      .split("\n\n")
+    val passports = re.findAllIn(content)
       .map(entry => entry.replace("\n", " ").trim)
       .map(entry => entry.split(" "))
       .map(stringList => {
