@@ -11,6 +11,9 @@ object Part2 {
     val passports = re.findAllIn(content)
       .map(entry => entry.replace("\n", " ").trim)
       .map(entry => entry.split(" "))
+      .filter(passport =>
+        passport.size == 8 || (passport.size == 7 && !passport.find(strEntry => strEntry.contains("cid")).isDefined)
+      )
       .map(stringList => {
         stringList
           .map(entry => entry.split(":"))
@@ -18,9 +21,6 @@ object Part2 {
           .toMap
       })
     val validCount = passports
-      .filter(passport =>
-        passport.size == 8 || (passport.size == 7 && !passport.contains("cid"))
-      )
       .filter(areFieldsValid(_))
       .size
 
