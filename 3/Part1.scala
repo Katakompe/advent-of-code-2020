@@ -1,8 +1,11 @@
 import scala.io.Source
+import java.util.concurrent.TimeUnit
 
 object Part1 {
   def main(args: Array[String]): Unit = {
     val lines = parseInput("input.txt")
+
+    val t1 = System.nanoTime
 
     val treeHits:Int = lines
       .map(line => line.replace(" ", ""))
@@ -10,7 +13,9 @@ object Part1 {
       .map(line => (line._2*3, line._1.size, line._1))
       .map(mapToTreeHits)
       .sum
-
+      
+    val duration = TimeUnit.NANOSECONDS.toMillis(System.nanoTime - t1)
+    println("duration: " + duration)
     println(treeHits)
 
   }
