@@ -1,2 +1,2 @@
 # advent-of-code-2020
-My Scala Solutions for the Advent of Code 2020 
+My solutions for the Advent of Code 2020 written in Scala.
